@@ -3,12 +3,30 @@ import Header from "./Header";
 import {Container} from "@material-ui/core";
 import '../App.css'
 import MessageList from "./MessageList";
+import {makeStyles} from "@material-ui/core/styles";
+import MessageForm from "./MessageForm";
 
 function Chat(props) {
   const [messages, setMessages] = useState([]);
-  const [value, setValue] = useState('');
   const username = sessionStorage.getItem('nickname')
   const socket = useRef()
+
+  const useStyles = makeStyles({
+    root: {
+      width: '30vw',
+      minWidth: '300px',
+      minHeight: '450px',
+      height: '45vw',
+      borderRadius: '10px',
+      backgroundColor: '#fafafa',
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'relative'
+    }
+  });
+
+  const classes = useStyles()
+
 
   function connect() {
     socket.current = new WebSocket('ws://localhost:4000')
@@ -41,26 +59,11 @@ function Chat(props) {
   }, []);
 
 
-
-  const sendMessage = async () => {
-    const message = {
-      message: value,
-      event: 'message',
-      username,
-      id: Date.now()
-    }
-    socket.current.send(JSON.stringify(message))
-    setValue('')
-  }
-
   return (
-    <Container maxWidth={'xs'} className={'chat'} >
+    <Container maxWidth={'xs'} className={classes.root} >
       <Header username={username}/>
       <MessageList messages={messages} nickname={username} />
-      <div>
-        <input value={value} onChange={event => setValue(event.target.value)}/>
-        <button onClick={sendMessage}>Send</button>
-      </div>
+      <MessageForm username={username} socket={socket}/>
     </Container>
   );
 }

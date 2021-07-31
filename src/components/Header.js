@@ -13,7 +13,7 @@ function Header(props) {
 
     <Grid
       container
-      justify='space-between'
+      justifyContent='space-between'
       color='secondary'
     >
       <Typography
