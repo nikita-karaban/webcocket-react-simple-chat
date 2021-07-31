@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Header from "./Header";
 import {Container} from "@material-ui/core";
-import '../App.css'
 import MessageList from "./MessageList";
 import {makeStyles} from "@material-ui/core/styles";
 import MessageForm from "./MessageForm";
@@ -26,7 +25,6 @@ function Chat(props) {
   });
 
   const classes = useStyles()
-
 
   function connect() {
     socket.current = new WebSocket('ws://localhost:4000')

@@ -2,14 +2,3 @@ body {
   background-color: #FEECD0;
 }
 
-.chat {
-  background-color: #372549;
-  color: #fff;
-  border-radius: 9px 9px 0 0;
-}
-
-.chat a{
-  text-decoration: none;
-  color: #fff;
-  margin: auto 0;
-}

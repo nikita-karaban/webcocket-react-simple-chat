@@ -3,10 +3,23 @@ import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import {Container} from "@material-ui/core";
-import './WelcomePage.css'
 import { useHistory } from "react-router-dom";
+import {makeStyles} from "@material-ui/core/styles";
 
 function WelcomePage() {
+  const useStyles = makeStyles({
+    container: {
+      paddingTop: '20%',
+      margin: 'auto'
+    },
+    element: {
+      width: '100%',
+      margin: '10px auto'
+    }
+  });
+
+  const styled = useStyles()
+
 
   const [username, setUsername] = useState('');
   let history = useHistory();
@@ -18,7 +31,7 @@ function WelcomePage() {
   }
 
   return (
-    <Container maxWidth={'sm'} className={'container'}>
+    <Container maxWidth={'sm'} className={styled.container}>
       <Typography
         variant='h4'
         color='secondary'
@@ -36,14 +49,14 @@ function WelcomePage() {
           placeholder="please type your nickname"
           type="text"
           fullWidth
-          className={'element'}
+          className={styled.element}
         />
         <Button
           type='submit'
           variant="contained"
           color="secondary"
           size="large"
-          className={'element'}
+          className={styled.element}
         >Sign-in</Button>
       </form>
     </Container>

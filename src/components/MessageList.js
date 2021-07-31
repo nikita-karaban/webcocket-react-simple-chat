@@ -1,7 +1,6 @@
 import React from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import {makeStyles} from '@material-ui/core/styles';
-// import MessageItem from "./MessageItem";
 
 function MessageList({messages, nickname}) {
   const useStyles = makeStyles({
@@ -30,10 +29,10 @@ function MessageList({messages, nickname}) {
       {messages.map(mess =>
         <div key={mess.id}>
           {mess.event === 'connection'
-            ? <div className="connection_message">
+            ? <div >
               Пользователь {mess.username} подключился
             </div>
-            : <div className="message">
+            : <div >
               {mess.username}: {mess.message}
             </div>
           }
